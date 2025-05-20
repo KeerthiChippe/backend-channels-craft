@@ -116,6 +116,8 @@ const dashboardCltrs = require("./app/controllers/dashboard-cltr");
 // authenticateUser, authorizeUser(['admin', 'operator']),
 app.post(
   "/api/users/register",
+  authenticateUser,
+  authorizeUser(["admin", "operator"]),
   checkSchema(registerSchema),
   usersCltr.register
 );

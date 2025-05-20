@@ -86,6 +86,7 @@ usersCltr.login = async (req, res) => {
       res.json({ token: token });
     }
   } catch (e) {
+    console.log(e);
     res.status(500).json(e);
   }
 };
@@ -214,7 +215,7 @@ usersCltr.listAllUsers = async (req, res) => {
       res.json(users);
     } else if (req.user.role === "operator") {
       const users = await User.find({ operatorId: req.user.operator });
-
+      // console.log(users, 'customer users')
       res.json(users);
     }
   } catch (e) {
